@@ -1,0 +1,63 @@
+---
+const logos = (await Astro.glob("/public/logos/*.svg")).map(
+  (logo) => logo.default
+);
+---
+
+<div class="strip">
+  <div class="track">
+    {
+      logos.map((logo) => (
+        <div class="logo-container">
+          <img src={logo.src} alt="" />
+        </div>
+      ))
+    }
+  </div>
+  <div class="track">
+    {
+      logos.map((logo) => (
+        <div class="logo-container">
+          <img src={logo.src} alt="" />
+        </div>
+      ))
+    }
+  </div>
+  <div class="track">
+    {
+      logos.map((logo) => (
+        <div class="logo-container">
+          <img src={logo.src} alt="" />
+        </div>
+      ))
+    }
+  </div>
+</div>
+<style>
+  .logo-conatiner {
+    width: auto;
+    height: 52px;
+  }
+  .strip {
+    display: flex;
+    border-block: 1px solid var(--color-divider);
+    height: 108px;
+    align-items: center;
+    overflow: hidden;
+  }
+  .track {
+    display: flex;
+    gap: 50px;
+    animation: ticker 5s linear infinite;
+    padding-left: 50px;
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
