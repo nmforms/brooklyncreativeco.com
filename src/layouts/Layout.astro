@@ -73,13 +73,18 @@
   }
 
   body {
-    font-family: "OverpassMono", monospace;
-    font-size: 1rem;
-    line-height: 1.625rem;
     margin: 0;
     padding: 0;
     background-color: var(--color-background);
     color: var(--color-text);
+  }
+
+  body,
+  h2 {
+    font-family: "OverpassMono", monospace;
+    font-size: 1rem;
+    line-height: 1.625rem;
+    font-weight: normal;
   }
 
   h1 {
@@ -94,22 +99,6 @@
   }
 
   a {
-    color: var(--color-text);
     text-decoration: none;
-    font-size: 0.875rem;
-    line-height: 1rem;
-    text-transform: uppercase;
-    position: relative;
-  }
-
-  a:hover:after,
-  a.selected:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -10px;
-    height: 2px;
-    background-color: var(--color-primary);
   }
 </style>

@@ -1,0 +1,40 @@
+---
+import Button from "./Button.astro";
+---
+
+<div class="container">
+  <h1 class="title">
+    independent Creative company<br />specializing in the fields of design,<br
+    />brand and digital experiences.
+  </h1>
+  <h2 class="subtitle">
+    Brooklyn Creative is the independent studio practice of Nicole Formica -<br
+    />
+    specializing in the fields of design, brand and digital experience.
+  </h2>
+  <Button>Let's work together</Button>
+</div>
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    margin-inline: var(--page-margin);
+    border: 1px solid var(--color-divider);
+    border-top: none;
+    padding-top: 120px;
+    padding-bottom: 100px;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .subtitle {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 64px;
+  }
+</style>
