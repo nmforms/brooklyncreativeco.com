@@ -1,0 +1,21 @@
+---
+const { case: c } = Astro.props;
+---
+
+<div class="case-item">
+  <div class="case-image"></div>
+  <h2>{c.data.name}</h2>
+  <p>{c.data.tags.join(", ")}</p>
+</div>
+<style>
+  .case-item {
+    padding: 40px;
+    border-right: 1px solid var(--color-divider);
+  }
+  .case-image {
+    background-color: gray;
+    width: 100%;
+    aspect-ratio: 520 / 489; /* TODO: remove */
+    height: auto;
+  }
+</style>

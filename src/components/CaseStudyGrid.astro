@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import CaseStudyTile from "./CaseStudyTile.astro";
+
+const allCases = await getCollection("cases");
+---
+
+<div class="case-grid">
+  {allCases.map((c) => <CaseStudyTile case={c} />)}
+</div>
+<style>
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-inline: var(--page-margin);
+    border-left: 1px solid var(--color-divider);
+  }
+</style>
