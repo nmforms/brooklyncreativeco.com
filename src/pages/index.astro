@@ -7,10 +7,34 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <Nav />
-  <Hero />
-  <LogoStrip />
-  <CaseStudyGrid />
+  <div class="container">
+    <div class="full-bleed">
+      <Nav />
+    </div>
+    <div class="content">
+      <Hero />
+    </div>
+    <div class="full-bleed">
+      <LogoStrip />
+    </div>
+    <div class="content">
+      <CaseStudyGrid />
+    </div>
+  </div>
 </Layout>
 
-<style></style>
+<style>
+  .container {
+    display: grid;
+    grid-template-columns:
+      minmax(var(--page-margin), 1fr) minmax(0, var(--content-max-width))
+      minmax(var(--page-margin), 1fr);
+  }
+  .content {
+    grid-column: 2;
+  }
+
+  .full-bleed {
+    grid-column: 1 / -1;
+  }
+</style>
