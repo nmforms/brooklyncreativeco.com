@@ -44,7 +44,7 @@
   @font-face {
     font-family: "OverpassMono";
     src: url("/fonts/OverpassMono-Medium.ttf") format("truetype");
-    font-weight: medium;
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
   }
@@ -52,7 +52,7 @@
   @font-face {
     font-family: "OverpassMono";
     src: url("/fonts/OverpassMono-Light.ttf") format("truetype");
-    font-weight: light;
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
   }
@@ -78,23 +78,35 @@
     padding: 0;
     background-color: var(--color-background);
     color: var(--color-text);
-  }
-
-  body,
-  h2 {
     font-family: "OverpassMono", monospace;
     font-size: 1rem;
     line-height: 1.625rem;
     font-weight: normal;
   }
 
-  h1 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  .h2 {
+    font-family: "TAYBirdie";
+    font-size: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  .h1 {
     font-family: "TAYBirdie";
     font-size: 2.5rem;
     line-height: 3rem;
     font-weight: normal;
-    margin: 0;
-    padding: 0;
     color: var(--color-primary);
     text-transform: uppercase;
   }
