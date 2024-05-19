@@ -1,12 +1,18 @@
 ---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  case: CollectionEntry<"cases">;
+}
 const { case: c } = Astro.props;
 ---
 
-<div class="case-item">
-  <div class="case-image"></div>
+<a class="case-item" href={`cases/${c.slug}`}>
+  <img class="case-image" src={`${c.data.thumbnail}&${c.id}`} />
   <h2 class="case-title h2">{c.data.name}</h2>
   <div class="case-body">{c.data.tags.join(", ")}</div>
-</div>
+</a>
+
 <style>
   .case-item {
     padding: 40px;

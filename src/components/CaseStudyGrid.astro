@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import CaseStudyTile from "./CaseStudyTile.astro";
+import type { CollectionEntry } from "astro:content";
 
 const allCases = await getCollection("cases");
 ---
