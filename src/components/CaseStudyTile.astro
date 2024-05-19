@@ -28,4 +28,10 @@ const { case: c } = Astro.props;
     font-weight: 500;
     text-transform: uppercase;
   }
+
+  @media (max-width: 768px) {
+    .case-item {
+      border-right: none;
+    }
+  }
 </style>
