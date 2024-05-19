@@ -49,6 +49,29 @@
       bottom: -10px;
       height: 2px;
       background-color: var(--color-primary);
+      animation: grow 0.3s ease;
+    }
+
+    .nav-links:hover > a.selected:not(:hover):after {
+      animation: shrink 0.3s ease forwards;
+    }
+
+    @keyframes grow {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes shrink {
+      from {
+        width: 100%;
+      }
+      to {
+        width: 0;
+      }
     }
   </style>
 </nav>
