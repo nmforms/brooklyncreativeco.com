@@ -54,7 +54,18 @@
     flex-basis: 75%;
     text-align: right;
     color: var(--color-background);
-    font-size: 2.5rem;
+    font-size: clamp(1rem, -1.6667rem + 5.5556vw, 2.5rem);
     font-weight: 700;
+  }
+
+  @media screen and (max-width: 768px) {
+    .email {
+      display: none;
+    }
+
+    .info {
+      flex-basis: 100%;
+      text-align: center;
+    }
   }
 </style>
