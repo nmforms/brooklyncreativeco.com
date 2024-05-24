@@ -1,22 +1,13 @@
----
-import type { CollectionEntry } from "astro:content";
-
-interface Props {
-  case: CollectionEntry<"cases">;
-}
-
-const { case: c } = Astro.props;
-const { Content } = await c.render();
----
-
 <div class="container">
-  <h1 class="title h1-big">{c.data.title}</h1>
-  <div class="content">
-    <Content />
+  <div class="title">
+    <slot name="title" />
   </div>
-  <ul class="list">
-    {c.data.jobs.map((job) => <li>{job}</li>)}
-  </ul>
+  <div class="left">
+    <slot name="left" />
+  </div>
+  <div class="right">
+    <slot name="right" />
+  </div>
 </div>
 <style>
   .container {
@@ -32,11 +23,11 @@ const { Content } = await c.render();
     margin-bottom: 40px;
   }
 
-  .content {
+  .left {
     grid-column: 2 / span 6;
   }
 
-  .list {
+  .right {
     grid-column: 9 / span 4;
   }
 
@@ -48,11 +39,11 @@ const { Content } = await c.render();
       grid-column: 1 / span 12;
     }
 
-    .content {
+    .left {
       grid-column: 1 / span 12;
     }
 
-    .list {
+    .right {
       margin-top: 40px;
       grid-column: 1 / span 12;
     }

@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import CaseHero from "../../components/cases/CaseHero.astro";
 import CaseStudyTile from "../../components/CaseStudyTile.astro";
 import type { CollectionEntry } from "astro:content";
+import HeroTwoColumn from "../../components/HeroTwoColumn.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("cases");
@@ -34,12 +35,21 @@ interface Props {
 }
 
 const { entry, previousEntry, nextEntry } = Astro.props;
+const { Content } = await entry.render();
 ---
 
 <Layout>
   <div class="container">
     <div class="content">
-      <CaseHero case={entry} />
+      <HeroTwoColumn>
+        <h1 class="h1-big" slot="title">{entry.data.title}</h1>
+        <div slot="left">
+          <Content />
+        </div>
+        <ul slot="right">
+          {entry.data.jobs.map((job) => <li>{job}</li>)}
+        </ul>
+      </HeroTwoColumn>
     </div>
     {
       entry.data.images.map((image) => (
