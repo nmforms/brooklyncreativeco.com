@@ -12,7 +12,6 @@
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "astro": "^4.8.6",
-    "rehype-class-names": "^2.0.0",
     "typescript": "^5.4.5"
   }
 }

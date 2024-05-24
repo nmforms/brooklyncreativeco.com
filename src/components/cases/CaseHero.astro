@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  case: CollectionEntry<"cases">;
+}
+
+const { case: c } = Astro.props;
+const { Content } = await c.render();
+---
+
+<div class="container">
+  <h1 class="title h1-big">{c.data.title}</h1>
+  <div class="content">
+    <Content />
+  </div>
+  <ul class="list">
+    {c.data.jobs.map((job) => <li>{job}</li>)}
+  </ul>
+</div>
+<style>
+  .container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 120px 40px 80px 40px;
+    border-inline: 1px solid var(--color-divider);
+  }
+
+  .title {
+    grid-column: 2 / span 10;
+    margin-bottom: 40px;
+  }
+
+  .content {
+    grid-column: 2 / span 6;
+  }
+
+  .list {
+    grid-column: 9 / span 4;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      border-inline: 0;
+    }
+    .title {
+      grid-column: 1 / span 12;
+    }
+
+    .content {
+      grid-column: 1 / span 12;
+    }
+
+    .list {
+      margin-top: 40px;
+      grid-column: 1 / span 12;
+    }
+  }
+</style>

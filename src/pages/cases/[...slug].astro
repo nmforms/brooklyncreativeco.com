@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-// 1. Generate a new path for every collection entry
+import CaseHero from "../../components/cases/CaseHero.astro";
+
 export async function getStaticPaths() {
   const blogEntries = await getCollection("cases");
   return blogEntries.map((entry) => ({
@@ -9,12 +10,46 @@ export async function getStaticPaths() {
     props: { entry },
   }));
 }
-// 2. For your template, you can get the entry directly from the prop
+
 const { entry } = Astro.props;
-const { Content } = await entry.render();
 ---
 
 <Layout>
-  <h1>{entry.data.name}</h1>
-  <Content />
+  <div class="container">
+    <div class="content">
+      <CaseHero case={entry} />
+    </div>
+    {
+      entry.data.images.map((image) => (
+        <img src={image} alt={entry.data.title} class="full-bleed" />
+      ))
+    }
+  </div>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns:
+        minmax(var(--page-margin), 1fr) minmax(0, var(--content-max-width))
+        minmax(var(--page-margin), 1fr);
+    }
+
+    .content {
+      grid-column: 2;
+    }
+
+    .full-bleed {
+      grid-column: 1 / -1;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 0 minmax(0, 1fr) 0;
+      }
+    }
+  </style>
 </Layout>
