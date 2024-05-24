@@ -2,16 +2,38 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import CaseHero from "../../components/cases/CaseHero.astro";
+import CaseStudyTile from "../../components/CaseStudyTile.astro";
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("cases");
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  return blogEntries.map((entry, i) => {
+    let previousEntry = i > 0 ? blogEntries[i - 1] : null;
+    let nextEntry = i < blogEntries.length - 1 ? blogEntries[i + 1] : null;
+    if (i === 0) {
+      previousEntry = blogEntries[i + 1];
+      nextEntry = blogEntries[i + 2];
+    }
+
+    if (i === blogEntries.length - 1) {
+      previousEntry = blogEntries[i - 2];
+      nextEntry = blogEntries[i - 1];
+    }
+
+    return {
+      params: { slug: entry.slug },
+      props: { entry, previousEntry, nextEntry },
+    };
+  });
 }
 
-const { entry } = Astro.props;
+interface Props {
+  entry: CollectionEntry<"cases">;
+  previousEntry: CollectionEntry<"cases">;
+  nextEntry: CollectionEntry<"cases">;
+}
+
+const { entry, previousEntry, nextEntry } = Astro.props;
 ---
 
 <Layout>
@@ -24,6 +46,13 @@ const { entry } = Astro.props;
         <img src={image} alt={entry.data.title} class="full-bleed" />
       ))
     }
+    <div class="content more-work">
+      <div class="title h2">View more work</div>
+      <div class="more-work-grid">
+        <CaseStudyTile case={previousEntry} showBorder={false} />
+        <CaseStudyTile case={nextEntry} showBorder={false} />
+      </div>
+    </div>
   </div>
   <style>
     .container {
@@ -44,6 +73,20 @@ const { entry } = Astro.props;
     img {
       width: 100%;
       height: auto;
+    }
+
+    .more-work {
+      margin-top: 120px;
+      padding: 40px 80px 80px 80px;
+
+      .title {
+        text-align: center;
+      }
+    }
+
+    .more-work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
     }
 
     @media (max-width: 768px) {

@@ -3,19 +3,26 @@ import type { CollectionEntry } from "astro:content";
 
 interface Props {
   case: CollectionEntry<"cases">;
+  showBorder?: boolean;
 }
-const { case: c } = Astro.props;
+const { case: c, showBorder = true } = Astro.props;
 ---
 
-<a class="case-item" href={`cases/${c.slug}`}>
+<a
+  class:list={["case-item", { "case-item-border": showBorder }]}
+  href={`/cases/${c.slug}`}
+>
   <img class="case-image" src={`${c.data.thumbnail}&${c.id}`} />
-  <h2 class="case-title h2">{c.data.name}</h2>
+  <h2 class="case-title h3">{c.data.title}</h2>
   <div class="case-body">{c.data.tags.join(", ")}</div>
 </a>
 
 <style>
   .case-item {
     padding: 40px;
+  }
+
+  .case-item-border {
     border-right: 1px solid var(--color-divider);
   }
   .case-image {
@@ -36,7 +43,7 @@ const { case: c } = Astro.props;
   }
 
   @media (max-width: 768px) {
-    .case-item {
+    .case-item-border {
       border-right: none;
     }
   }
