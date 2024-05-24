@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import CaseStudyTile from "./CaseStudyTile.astro";
-import type { CollectionEntry } from "astro:content";
 
 const allCases = await getCollection("cases");
 ---
@@ -14,12 +13,14 @@ const allCases = await getCollection("cases");
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     border-left: 1px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
   }
 
   @media (max-width: 768px) {
     .case-grid {
       grid-template-columns: 1fr;
       border-left: none;
+      border-bottom: none;
     }
   }
 </style>

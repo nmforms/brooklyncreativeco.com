@@ -3,11 +3,11 @@
   <div class="container">
     <img src="/logo.svg" alt="logo" width="80px" height="60px" />
     <label for="menu" tabindex="0" class="mobile-nav-button">
+      <input type="checkbox" id="menu" />
       <div></div>
       <div></div>
       <div></div>
     </label>
-    <input type="checkbox" id="menu" />
     <div class="nav-links">
       <a class="selected" href="#">work</a>
       <a href="#">services</a>
@@ -94,7 +94,8 @@
         padding-inline: var(--page-margin);
         position: relative;
       }
-      input[type="checkbox"]:not(:checked) + .nav-links {
+      .mobile-nav-button:has(input[type="checkbox"]:not(:checked))
+        + .nav-links {
         height: 0;
         overflow: hidden;
         padding-top: 0;
