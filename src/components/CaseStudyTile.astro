@@ -13,7 +13,7 @@ const { case: c, showBorder = true } = Astro.props;
   href={`/cases/${c.slug}`}
 >
   <img class="case-image" src={`${c.data.thumbnail}&${c.id}`} />
-  <h2 class="case-title h3">{c.data.title}</h2>
+  <h2 class="case-title h2">{c.data.title}</h2>
   <div class="case-body">{c.data.tags.join(", ")}</div>
 </a>
 
