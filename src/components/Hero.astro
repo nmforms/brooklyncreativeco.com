@@ -5,9 +5,10 @@ interface Props {
   titleText: string;
   subtitleText: string;
   buttonText: string;
+  buttonHref: string;
 }
 
-const { titleText, subtitleText, buttonText } = Astro.props;
+const { titleText, subtitleText, buttonText, buttonHref } = Astro.props;
 ---
 
 <div class="container">
@@ -17,7 +18,7 @@ const { titleText, subtitleText, buttonText } = Astro.props;
   <h2 class="subtitle">
     {subtitleText}
   </h2>
-  <Button>{buttonText}</Button>
+  <Button href={buttonHref}>{buttonText}</Button>
 </div>
 <style>
   .container {

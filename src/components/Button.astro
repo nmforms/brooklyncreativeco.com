@@ -1,4 +1,12 @@
-<a class="button" href="#"><slot /></a>
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a class="button" href={href}><slot /></a>
 <style>
   .button {
     display: inline-block;
