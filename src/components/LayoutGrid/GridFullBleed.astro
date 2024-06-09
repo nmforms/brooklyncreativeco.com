@@ -1,6 +1,33 @@
-<div class="full-bleed"><slot /></div>
+---
+interface Props {
+  borderTop?: boolean;
+  borderBottom?: boolean;
+}
+
+const { borderTop, borderBottom } = Astro.props;
+---
+
+<div
+  class:list={[
+    "full-bleed",
+    {
+      "border-top": borderTop,
+      "border-bottom": borderBottom,
+    },
+  ]}
+>
+  <slot />
+</div>
 <style>
   .full-bleed {
     grid-column: full-bleed;
+  }
+
+  .border-top {
+    border-block-start: 1px solid var(--color-divider);
+  }
+
+  .border-bottom {
+    border-block-end: 1px solid var(--color-divider);
   }
 </style>

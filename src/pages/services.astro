@@ -1,13 +1,14 @@
 ---
 import Hero from "../components/Hero.astro";
 import GridContent from "../components/LayoutGrid/GridContent.astro";
+import GridFullBleed from "../components/LayoutGrid/GridFullBleed.astro";
 import LayoutGrid from "../components/LayoutGrid/LayoutGrid.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
   <LayoutGrid>
-    <GridContent>
+    <GridContent borderInline>
       <Hero
         titleText="Brooklyn Creative is the independent studio practice of Nicole Formica"
         subtitleText="With over a decade of experience working with both established and brand new companies across a variety of industries, \
@@ -17,7 +18,54 @@ Whether you're starting from scratch or pivoting direction, Nicole is passionate
         buttonText="Let's work together"
       />
     </GridContent>
+    <GridFullBleed borderBottom borderTop>
+      <div class="core-services-header">
+        <h2 class="h2">core specialties & services:</h2>
+      </div>
+    </GridFullBleed>
+    <GridContent borderInline>
+      <div class="core-services">
+        <ul>
+          <li>Visual Strategy</li>
+          <li>Product Design</li>
+          <li>Digital Product Strategy</li>
+          <li>Branding</li>
+          <li>Logo & Identity Design</li>
+          <li>Creative Direction</li>
+        </ul>
+
+        <ul>
+          <li>Web Design</li>
+          <li>Information Architecture (IA)</li>
+          <li>User Experience Design (UX)</li>
+          <li>User Interface Design (UI)</li>
+          <li>User Research & Interviews</li>
+          <li>Prototyping</li>
+        </ul>
+
+        <ul>
+          <li>Responsive Design</li>
+          <li>Design Systems</li>
+          <li>Design & Creative Frameworks</li>
+          <li>Design & Creative Consulting</li>
+        </ul>
+      </div>
+    </GridContent>
   </LayoutGrid>
 </Layout>
 
-<style></style>
+<style>
+  .core-services-header h2 {
+    text-align: center;
+    margin-block: 1.7em;
+  }
+
+  .core-services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em;
+    margin-inline: 40px;
+    margin-top: 2.5rem;
+    margin-bottom: 5rem;
+  }
+</style>

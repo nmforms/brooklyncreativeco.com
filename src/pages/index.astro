@@ -10,7 +10,7 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
   <LayoutGrid>
-    <GridContent>
+    <GridContent borderInline>
       <Hero
         titleText="independent Creative company specializing in the fields of design, brand and digital experiences."
         subtitleText="Brooklyn Creative is the independent studio practice of Nicole Formica -\
@@ -18,26 +18,21 @@ import Layout from "../layouts/Layout.astro";
         buttonText="Let's work together"
       />
     </GridContent>
-    <GridFullBleed>
+    <GridFullBleed borderTop borderBottom>
       <LogoStrip />
     </GridFullBleed>
     <GridContent>
       <CaseStudyGrid />
     </GridContent>
-    <GridContent>
+    <GridContent borderInline borderTop borderBottom>
       <div class="spacer"></div>
     </GridContent>
   </LayoutGrid>
 </Layout>
 
 <style>
-  .full-bleed {
-    grid-column: full-bleed;
-  }
-
   .spacer {
     height: 80px;
-    border-inline: 1px solid var(--color-divider);
   }
 
   @media (max-width: 768px) {
