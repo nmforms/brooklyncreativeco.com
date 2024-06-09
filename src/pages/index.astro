@@ -1,43 +1,38 @@
 ---
 import CaseStudyGrid from "../components/CaseStudyGrid.astro";
 import Hero from "../components/Hero.astro";
+import GridContent from "../components/LayoutGrid/GridContent.astro";
+import GridFullBleed from "../components/LayoutGrid/GridFullBleed.astro";
+import LayoutGrid from "../components/LayoutGrid/LayoutGrid.astro";
 import LogoStrip from "../components/LogoStrip.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <div class="container">
-    <div class="content">
+  <LayoutGrid>
+    <GridContent>
       <Hero
         titleText="independent Creative company specializing in the fields of design, brand and digital experiences."
         subtitleText="Brooklyn Creative is the independent studio practice of Nicole Formica -\
         specializing in the fields of design, brand and digital experience."
         buttonText="Let's work together"
       />
-    </div>
-    <div class="full-bleed">
+    </GridContent>
+    <GridFullBleed>
       <LogoStrip />
-    </div>
-    <div class="content">
+    </GridFullBleed>
+    <GridContent>
       <CaseStudyGrid />
-    </div>
-    <div class="content spacer"></div>
-  </div>
+    </GridContent>
+    <GridContent>
+      <div class="spacer"></div>
+    </GridContent>
+  </LayoutGrid>
 </Layout>
 
 <style>
-  .container {
-    display: grid;
-    grid-template-columns:
-      minmax(var(--page-margin), 1fr) minmax(0, var(--content-max-width))
-      minmax(var(--page-margin), 1fr);
-  }
-  .content {
-    grid-column: 2;
-  }
-
   .full-bleed {
-    grid-column: 1 / -1;
+    grid-column: full-bleed;
   }
 
   .spacer {

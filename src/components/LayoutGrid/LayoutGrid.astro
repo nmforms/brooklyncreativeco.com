@@ -1,0 +1,13 @@
+<div class="container"><slot /></div>
+<style>
+  .container {
+    display: grid;
+    grid-template-columns:
+      [full-bleed-start]
+      minmax(var(--page-margin), 1fr)
+      [content-start]
+      minmax(0, var(--content-max-width))
+      [content-end]
+      minmax(var(--page-margin), 1fr) [full-bleed-end];
+  }
+</style>

@@ -1,17 +1,23 @@
 ---
 import Hero from "../components/Hero.astro";
+import GridContent from "../components/LayoutGrid/GridContent.astro";
+import LayoutGrid from "../components/LayoutGrid/LayoutGrid.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <Hero
-    titleText="Brooklyn Creative is the independent studio practice of Nicole Formica"
-    subtitleText="With over a decade of experience working with both established and brand new companies across a variety of industries, \
+  <LayoutGrid>
+    <GridContent>
+      <Hero
+        titleText="Brooklyn Creative is the independent studio practice of Nicole Formica"
+        subtitleText="With over a decade of experience working with both established and brand new companies across a variety of industries, \
 Nicole understands the importance of how brand, visual and digital design intersect. \
 Her approach combines creative strategy with aesthetic expertise to craft beautiful, user-focused products and authentic brand experiences.\n\n\
 Whether you're starting from scratch or pivoting direction, Nicole is passionate about helping companies imagine all their possibilities every step of the way."
-    buttonText="Let's work together"
-  />
+        buttonText="Let's work together"
+      />
+    </GridContent>
+  </LayoutGrid>
 </Layout>
 
 <style></style>
