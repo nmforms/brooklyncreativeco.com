@@ -10,4 +10,17 @@
       [content-end]
       minmax(var(--page-margin), 1fr) [full-bleed-end];
   }
+
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns:
+        [full-bleed-start]
+        0
+        [content-start]
+        minmax(0, 1fr)
+        [content-end]
+        0
+        [full-bleed-end];
+    }
+  }
 </style>

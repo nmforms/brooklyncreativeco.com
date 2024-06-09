@@ -53,6 +53,28 @@ Whether you're starting from scratch or pivoting direction, Nicole is passionate
         </ul>
       </div>
     </GridContent>
+    <GridContent borderInline borderTop>
+      <div class="partners-clients">
+        <div>
+          <h2 class="h2">Creative partners:</h2>
+          <p>
+            I have incredible partners who can help me get the job done for any
+            project needs: Illustration, Iconography, Full Stack Development,
+            Motion Design, Copywriting, Photography, Motion Graphics,
+            Typography, Packaging, Web Development, Mobile Development
+          </p>
+        </div>
+        <div>
+          <h2 class="h2">select clients:</h2>
+          <p>
+            Foursquare, Teachers Pay Teachers, Glossier, Ribbon Home, Oceans
+            Ventures, Pivot Bio, Granular, LG Electronics, Abbot Technologies,
+            ID.me, Qualtrics, TheSkimm, Pepsi, <br /><br />...the only one
+            missing is you!
+          </p>
+        </div>
+      </div>
+    </GridContent>
     <GridFullBleed borderTop borderBottom>
       <div class="about-background">
         <LayoutGrid>
@@ -104,6 +126,34 @@ Whether you're starting from scratch or pivoting direction, Nicole is passionate
         grid-template-columns: 1fr;
         gap: 2.5rem;
         text-align: center;
+      }
+    }
+
+    .partners-clients {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      > * {
+        padding-inline: 2.5em;
+        text-align: center;
+        padding-block: 5rem;
+
+        h2 {
+          margin-bottom: 1.25rem;
+        }
+      }
+
+      > :last-child {
+        border-left: 1px solid var(--color-divider);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .partners-clients {
+        grid-template-columns: 1fr;
+        > :last-child {
+          border-left: none;
+        }
       }
     }
 
