@@ -1,18 +1,23 @@
 ---
 import Button from "./Button.astro";
+
+interface Props {
+  titleText: string;
+  subtitleText: string;
+  buttonText: string;
+}
+
+const { titleText, subtitleText, buttonText } = Astro.props;
 ---
 
 <div class="container">
   <h1 class="title h1">
-    independent Creative company<br />specializing in the fields of design,<br
-    />brand and digital experiences.
+    {titleText}
   </h1>
   <h2 class="subtitle">
-    Brooklyn Creative is the independent studio practice of Nicole Formica -<br
-    />
-    specializing in the fields of design, brand and digital experience.
+    {subtitleText}
   </h2>
-  <Button>Let's work together</Button>
+  <Button>{buttonText}</Button>
 </div>
 <style>
   .container {
@@ -29,12 +34,16 @@ import Button from "./Button.astro";
 
   .title {
     text-align: center;
+    white-space: pre-wrap;
+    max-width: 31ch;
   }
 
   .subtitle {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 64px;
+    white-space: pre-wrap;
+    max-width: 75ch;
   }
 
   @media (max-width: 768px) {

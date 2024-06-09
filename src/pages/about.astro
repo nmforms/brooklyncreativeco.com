@@ -1,30 +1,17 @@
 ---
-import HeroTwoColumn from "../components/HeroTwoColumn.astro";
+import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <HeroTwoColumn>
-    <h1 class="h1" slot="title">Lorem Ipsum DOlor Sett Exceuht Cesit</h1>
-    <div slot="left">
-      Brooklyn Creative is the independent studio practice of Nicole Formica -
-      specializing in the fields of design, brand and digital experience. With
-      over a decade of experience working with both established and brand new
-      companies across a variety of industries, she understands the importance
-      of how brand, visual and digital design intersect. Her approach combines
-      creative strategy with aesthetic expertise to craft beautiful,
-      user-focused products and authentic brand experiences. Whether you're
-      starting from scratch or pivoting direction, Nicole is passionate about
-      helping companies imagine all their possibilities every step of the way.
-    </div>
-    <img slot="right" />
-  </HeroTwoColumn>
+  <Hero
+    titleText="Brooklyn Creative is the independent studio practice of Nicole Formica"
+    subtitleText="With over a decade of experience working with both established and brand new companies across a variety of industries, \
+Nicole understands the importance of how brand, visual and digital design intersect. \
+Her approach combines creative strategy with aesthetic expertise to craft beautiful, user-focused products and authentic brand experiences.\n\n\
+Whether you're starting from scratch or pivoting direction, Nicole is passionate about helping companies imagine all their possibilities every step of the way."
+    buttonText="Let's work together"
+  />
 </Layout>
 
-<style>
-  img {
-    background-color: blue;
-    width: 100%;
-    height: 100%;
-  }
-</style>
+<style></style>
