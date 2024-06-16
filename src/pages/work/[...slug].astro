@@ -1,0 +1,136 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import WorkTile from "../../components/WorkTile.astro";
+import type { CollectionEntry } from "astro:content";
+import HeroTwoColumn from "../../components/HeroTwoColumn.astro";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("work");
+  return blogEntries.map((entry, i) => {
+    let previousEntry = i > 0 ? blogEntries[i - 1] : null;
+    let nextEntry = i < blogEntries.length - 1 ? blogEntries[i + 1] : null;
+    if (i === 0) {
+      previousEntry = blogEntries[i + 1];
+      nextEntry = blogEntries[i + 2];
+    }
+
+    if (i === blogEntries.length - 1) {
+      previousEntry = blogEntries[i - 2];
+      nextEntry = blogEntries[i - 1];
+    }
+
+    if (!previousEntry) {
+      previousEntry = entry;
+    }
+
+    if (!nextEntry) {
+      nextEntry = entry;
+    }
+
+    return {
+      params: { slug: entry.slug },
+      props: { entry, previousEntry, nextEntry },
+    };
+  });
+}
+
+interface Props {
+  entry: CollectionEntry<"work">;
+  previousEntry: CollectionEntry<"work">;
+  nextEntry: CollectionEntry<"work">;
+}
+
+const { entry, previousEntry, nextEntry } = Astro.props;
+const { Content } = await entry.render();
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/content/work/images/**/!(thumbnail).*"
+);
+// const workImages = Object.keys(allImages).filter((key) =>
+//   key.startsWith(`/src/content/work/images/${entry.data.imagesFolder}`)
+// );
+const workImages = Object.fromEntries(
+  Object.entries(allImages).filter(([key]) =>
+    key.startsWith(`/src/content/work/images/${entry.data.imagesFolder}`)
+  )
+);
+---
+
+<Layout>
+  <div class="container">
+    <div class="content">
+      <HeroTwoColumn>
+        <h1 class="h1-big" slot="title">{entry.data.title}</h1>
+        <div slot="left">
+          <Content />
+        </div>
+        <ul slot="right">
+          {entry.data.jobs.map((job) => <li>{job}</li>)}
+        </ul>
+      </HeroTwoColumn>
+    </div>
+    {
+      Object.entries(workImages).map(([_, image]) => (
+        <Image src={image()} alt={entry.data.title} class="content" />
+      ))
+    }
+    <div class="content more-work">
+      <div class="title h1">View more work</div>
+      <div class="more-work-grid">
+        <WorkTile work={previousEntry} showBorder={false} />
+        <WorkTile work={nextEntry} showBorder={false} />
+      </div>
+    </div>
+  </div>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns:
+        minmax(var(--page-margin), 1fr) minmax(0, var(--content-max-width))
+        minmax(var(--page-margin), 1fr);
+    }
+
+    .content {
+      grid-column: 2;
+    }
+
+    .full-bleed {
+      grid-column: 1 / -1;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .more-work {
+      margin-top: 120px;
+      padding: 40px 0px 80px 0px;
+
+      .title {
+        text-align: center;
+      }
+    }
+
+    .more-work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 0 minmax(0, 1fr) 0;
+      }
+
+      .more-work {
+        padding: 40px 0px 80px 0px;
+      }
+
+      .more-work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</Layout>
