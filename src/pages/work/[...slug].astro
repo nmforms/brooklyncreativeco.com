@@ -5,6 +5,7 @@ import WorkTile from "../../components/WorkTile.astro";
 import type { CollectionEntry } from "astro:content";
 import HeroTwoColumn from "../../components/HeroTwoColumn.astro";
 import { Image } from "astro:assets";
+import "../../css/markdown.css";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("work");
@@ -48,9 +49,7 @@ const { Content } = await entry.render();
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
   "/src/content/work/images/**/!(thumbnail).*"
 );
-// const workImages = Object.keys(allImages).filter((key) =>
-//   key.startsWith(`/src/content/work/images/${entry.data.imagesFolder}`)
-// );
+
 const workImages = Object.fromEntries(
   Object.entries(allImages).filter(([key]) =>
     key.startsWith(`/src/content/work/images/${entry.data.imagesFolder}`)
@@ -64,7 +63,9 @@ const workImages = Object.fromEntries(
       <HeroTwoColumn>
         <h1 class="h1-big" slot="title">{entry.data.title}</h1>
         <div slot="left">
-          <Content />
+          <div class="markdown">
+            <Content />
+          </div>
         </div>
         <ul slot="right">
           {entry.data.jobs.map((job) => <li>{job}</li>)}

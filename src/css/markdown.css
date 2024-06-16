@@ -1,0 +1,10 @@
+.markdown {
+  p {
+    margin-bottom: 1em;
+  }
+
+  a {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

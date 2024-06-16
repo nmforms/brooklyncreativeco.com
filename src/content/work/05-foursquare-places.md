@@ -19,4 +19,6 @@ Foursquare wanted to embark on a large redesign of their most used page on their
 
 We built a structure that incorporated many points of interest, while maintaining a simple and easy interface. Foursquare users from around the globe have contributed to a database of over 105 million places. They’ve shown what’s great inside those places by uploading over 630 million photos and writing over 91 million tips. This place page redesign was a way we could really make that content shine.
 
-Read More: [Building Real World Experiences in Foursquare City Guide](https://medium.com/foursquare-direct/building-real-world-experiences-in-foursquare-city-guide-ea0ebd57eea)
+Read More:
+
+[Building Real World Experiences in Foursquare City Guide](https://medium.com/foursquare-direct/building-real-world-experiences-in-foursquare-city-guide-ea0ebd57eea)
