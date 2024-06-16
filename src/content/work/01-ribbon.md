@@ -1,5 +1,6 @@
 ---
 title: Ribbon Home
+slug: ribbon
 tags:
   - Creative direction
   - Product design
