@@ -136,7 +136,7 @@ const workImages = Object.fromEntries(
   }
 </style>
 <script>
-  const markdownAnchorLinks = document.getElementById('markdown')?.getElementsByTagName('a');
+  const markdownAnchorLinks = document.getElementById('markdown')?.getElementsByTagName('a') ?? [];
   Array.from(markdownAnchorLinks).forEach((anchor) => {
     anchor.target = '_blank';
   })
