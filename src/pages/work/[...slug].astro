@@ -63,7 +63,7 @@ const workImages = Object.fromEntries(
       <HeroTwoColumn>
         <h1 class="h1-big" slot="title">{entry.data.title}</h1>
         <div slot="left">
-          <div class="markdown">
+          <div id="markdown" class="markdown">
             <Content />
           </div>
         </div>
@@ -85,53 +85,59 @@ const workImages = Object.fromEntries(
       </div>
     </div>
   </div>
-  <style>
+</Layout>
+<style>
+  .container {
+    display: grid;
+    grid-template-columns:
+      minmax(var(--page-margin), 1fr) minmax(0, var(--content-max-width))
+      minmax(var(--page-margin), 1fr);
+  }
+
+  .content {
+    grid-column: 2;
+  }
+
+  .full-bleed {
+    grid-column: 1 / -1;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .more-work {
+    margin-top: 120px;
+    padding: 40px 0px 80px 0px;
+
+    .title {
+      text-align: center;
+    }
+  }
+
+  .more-work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
     .container {
-      display: grid;
-      grid-template-columns:
-        minmax(var(--page-margin), 1fr) minmax(0, var(--content-max-width))
-        minmax(var(--page-margin), 1fr);
-    }
-
-    .content {
-      grid-column: 2;
-    }
-
-    .full-bleed {
-      grid-column: 1 / -1;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
+      grid-template-columns: 0 minmax(0, 1fr) 0;
     }
 
     .more-work {
-      margin-top: 120px;
       padding: 40px 0px 80px 0px;
-
-      .title {
-        text-align: center;
-      }
     }
 
     .more-work-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
     }
-
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: 0 minmax(0, 1fr) 0;
-      }
-
-      .more-work {
-        padding: 40px 0px 80px 0px;
-      }
-
-      .more-work-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</Layout>
+  }
+</style>
+<script>
+  const markdownAnchorLinks = document.getElementById('markdown')?.getElementsByTagName('a');
+  Array.from(markdownAnchorLinks).forEach((anchor) => {
+    anchor.target = '_blank';
+  })
+</script>
